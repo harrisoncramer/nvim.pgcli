@@ -5,6 +5,10 @@ href="https://github.com/mzarnitsa/psql">this</a> repository. The credit is thei
 
 [![asciicast](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz.svg)](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz)
 
+This repository is different from theirs because it:
+- Allows for connections to different databases, including with sensitive passwords
+- Reuses the same buffer every time, providing query/results history in the buffer
+
 ## Requirements
 
 - Neovim 0.7+
