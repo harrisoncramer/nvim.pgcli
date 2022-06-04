@@ -25,6 +25,7 @@ local function run_query(query, config)
 
 	local win = vim.api.nvim_get_current_win()
 	local buf = vim.api.nvim_win_get_buf(win)
+	vim.api.nvim_buf_set_option(buf, "modifiable", true)
 
 	-- remember new buffer for later to be able to close it
 	table.insert(query_result_buffers, buf)
@@ -71,7 +72,7 @@ local function run_query(query, config)
 	-- replace result buffer with query results
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { query, "" })
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, result)
-	vim.cmd([[ setlocal nomodifiable ]])
+	vim.api.nvim_buf_set_option(buf, "modifiable", false)
 end
 
 local function hash_password(password, algo)
