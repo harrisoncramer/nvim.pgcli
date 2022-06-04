@@ -13,7 +13,9 @@ local SETTINGS = {
 
 return {
 	yank_cell = function()
-		vim.api.nvim_feedkeys("T|vt|y", "n", false)
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("/<C-v>u2502<Esc>gemz", true, true, true), "n", false)
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("?<C-v>u2502<CR>", true, true, true), "n", false)
+		vim.api.nvim_feedkeys("llv`zy", "n", false)
 	end,
 	query_current_line = function()
 		local line_number = vim.api.nvim_win_get_cursor(0)[1]
