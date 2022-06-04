@@ -15,7 +15,7 @@ return {
 	yank_cell = function()
 		vim.api.nvim_feedkeys("T|vt|", "n", false)
 		local selection = u.get_visual_selection()
-		return selection:match("^(.*%S)%s*$")
+		return u.trim(selection)
 	end,
 	query_current_line = function()
 		local line_number = vim.api.nvim_win_get_cursor(0)[1]

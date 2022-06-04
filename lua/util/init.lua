@@ -1,5 +1,10 @@
 local hash = require("hash.init")
 
+function trim(s)
+	-- from PiL2 20.4
+	return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
+
 local query_result_buffers = {}
 local function run_query(query, config)
 	-- strip leading and trailing spaces
@@ -148,4 +153,5 @@ return {
 	run_query = run_query,
 	hash_password = hash_password,
 	get_visual_selection = get_visual_selection,
+	trim = trim,
 }
