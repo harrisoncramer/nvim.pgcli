@@ -48,7 +48,7 @@ local function run_query(query, config)
 	io.write("\\set QUIET 1 \n") -- no console output for the following commands
 	io.write("\\timing on \n") -- show timing of queries
 	io.write("\\pset null (NULL) \n") -- show nulls as "(NULL)"
-	-- io.write("\\pset linestyle unicode \n") -- use prettier lines inside the table
+	io.write("\\pset linestyle unicode \n") -- use prettier lines inside the table
 	io.write("\\pset border 2 \n") -- show pretty lines outside the table
 
 	io.write(query)
