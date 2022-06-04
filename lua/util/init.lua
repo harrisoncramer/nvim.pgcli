@@ -2,6 +2,9 @@ local hash = require("hash.init")
 
 local query_result_buffers = {}
 local function run_query(query, config)
+	local starting_win = vim.api.nvim_get_current_win()
+	local starting_buf = vim.api.nvim_win_get_buf(starting_win)
+
 	-- strip leading and trailing spaces
 	query = string.gsub(query, "^%s*(.-)%s*$", "%1")
 
@@ -25,7 +28,9 @@ local function run_query(query, config)
 
 	local win = vim.api.nvim_get_current_win()
 	local buf = vim.api.nvim_win_get_buf(win)
-	vim.api.nvim_buf_set_option(buf, "modifiable", true)
+
+	-- The problem with this is that you lose the query history, which can be nice!
+	-- vim.api.nvim_buf_set_option(buf, "modifiable", true)
 
 	-- remember new buffer for later to be able to close it
 	table.insert(query_result_buffers, buf)
@@ -72,7 +77,11 @@ local function run_query(query, config)
 	-- replace result buffer with query results
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { query, "" })
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, result)
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
+
+	vim.api.nvim_set_current_buf(starting_buf)
+
+	-- The problem with this is that you lose the query history, which can be nice!
+	-- vim.api.nvim_buf_set_option(buf, "modifiable", false)
 end
 
 local function hash_password(password, algo)
