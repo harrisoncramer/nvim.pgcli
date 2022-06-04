@@ -3,9 +3,7 @@
 This plugin let's you run PSQL commands directly from within Neovim. The core querying logic of this plugin is forked from <a
 href="https://github.com/mzarnitsa/psql">this</a> repository. The credit is theirs.
 
-<p align="center">
-  <img src="https://hjc-public.s3.amazonaws.com/psql.svg">
-</p>
+[![asciicast](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz.svg)](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz)
 
 ## Requirements
 
@@ -31,16 +29,15 @@ Then, call the setup function, optionally passing in a settings table:
 This package does not create any key bindings out of the box.
 
 The `psql` module exposes three functions. You can query PostgreSQL for the the current line, with the current paragraph, or with the
-current visual selection. These are the mappings that I've created for myself.
+current visual selection. In the results buffer after evaluating a query, you can also yank the contents of the cell under the cursor. These are the mappings that I've created for myself.
 
 ```lua
   local map_opts = { noremap = true, silent = true, nowait = true }
-  vim.keymap.set("n", "<localleader>r", psql.query_paragraph, map_opts)
-  vim.keymap.set("n", "<localleader>e", psql.query_current_line, map_opts)
-  vim.keymap.set("v", "<localleader>e", psql.query_selection, map_opts)
+  vim.keymap.set("n", "<localleader>r", psql.query_paragraph, map_opts) -- Queries using the current paragraph
+  vim.keymap.set("n", "<localleader>e", psql.query_current_line, map_opts) -- Queries using the current line
+  vim.keymap.set("v", "<localleader>e", psql.query_selection, map_opts) -- Queries using the visual selection
+  vim.keymap.set("n", "<localleader>y", psql.yank_cell, map_opts) -- In the results buffer, yanks the current cell
 ```
-
-The output of that command will be piped to a read-only buffer.
 
 ## Configuration
 
