@@ -12,6 +12,9 @@ local SETTINGS = {
 }
 
 return {
+	yank_cell = function()
+		-- TODO: Yank within cell boundaries
+	end,
 	query_current_line = function()
 		local line_number = vim.api.nvim_win_get_cursor(0)[1]
 		local query = vim.api.nvim_buf_get_lines(0, line_number - 1, line_number, false)

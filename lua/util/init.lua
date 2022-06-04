@@ -17,6 +17,7 @@ local function run_query(query, config)
       setlocal buftype=nofile
       setlocal bufhidden=hide
       setlocal noswapfile
+      set ft=sql
     else
       execute bufwinnr('__SQL__') . 'wincmd w'
     endif
@@ -70,10 +71,7 @@ local function run_query(query, config)
 	-- replace result buffer with query results
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { query, "" })
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, result)
-
-	-- Focus original SQL file
-	-- This is not working because we can't await the result of this operation
-	-- vim.api.nvim_feedkeys("sp", "n", false)
+	vim.cmd([[ setlocal readonly ]])
 end
 
 local function hash_password(password, algo)
