@@ -72,7 +72,7 @@ return {
 
 			-- Module contains hashed password, validate user input
 			vim.ui.input({ prompt = "Enter password for " .. db .. ": " }, function(input)
-        vim.api.nvim_feedkeys(":nx<CR>", "n")
+        vim.api.nvim_feedkeys(":nx<CR>", "n", false)
 				local hashed_password = u.hash_password(input, SETTINGS.hash_algorithm)
 				if var_table.connection.password ~= hashed_password then
 					print("The password is invalid")
