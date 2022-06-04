@@ -13,7 +13,7 @@ local SETTINGS = {
 
 return {
 	yank_cell = function()
-		vim.api.nvim_feedkeys("T|vt|y", "n", false)
+		vim.api.nvim_feedkeys("T|vt|", "n", false)
 		local selection = u.get_visual_selection()
 		return selection:match("^(.*%S)%s*$")
 	end,
