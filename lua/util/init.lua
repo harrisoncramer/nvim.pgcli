@@ -71,7 +71,7 @@ local function run_query(query, config)
 	-- replace result buffer with query results
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { query, "" })
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, result)
-	vim.cmd([[ setlocal readonly ]])
+	vim.cmd([[ setlocal nomodifiable ]])
 end
 
 local function hash_password(password, algo)
