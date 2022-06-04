@@ -13,7 +13,7 @@ local SETTINGS = {
 
 return {
 	yank_cell = function()
-		-- TODO: Yank within cell boundaries
+		vim.api.nvim_feedkeys("yi|", "n", false)
 	end,
 	query_current_line = function()
 		local line_number = vim.api.nvim_win_get_cursor(0)[1]
@@ -72,7 +72,7 @@ return {
 
 			-- Module contains hashed password, validate user input
 			vim.ui.input({ prompt = "Enter password for " .. db .. ": " }, function(input)
-        vim.api.nvim_feedkeys(":nx<CR>", "n", false)
+				vim.cmd([[ :call feedkeys(':', 'nx') ]])
 				local hashed_password = u.hash_password(input, SETTINGS.hash_algorithm)
 				if var_table.connection.password ~= hashed_password then
 					print("The password is invalid")
