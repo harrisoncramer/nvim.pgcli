@@ -2,9 +2,6 @@ local hash = require("hash.init")
 
 local query_result_buffers = {}
 local function run_query(query, config)
-	local starting_win = vim.api.nvim_get_current_win()
-	local starting_buf = vim.api.nvim_win_get_buf(starting_win)
-
 	-- strip leading and trailing spaces
 	query = string.gsub(query, "^%s*(.-)%s*$", "%1")
 
@@ -46,7 +43,7 @@ local function run_query(query, config)
 	io.write("\\set QUIET 1 \n") -- no console output for the following commands
 	io.write("\\timing on \n") -- show timing of queries
 	io.write("\\pset null (NULL) \n") -- show nulls as "(NULL)"
-	io.write("\\pset linestyle unicode \n") -- use prettier lines inside the table
+	-- io.write("\\pset linestyle unicode \n") -- use prettier lines inside the table
 	io.write("\\pset border 2 \n") -- show pretty lines outside the table
 
 	io.write(query)
@@ -78,7 +75,7 @@ local function run_query(query, config)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { query, "" })
 	vim.api.nvim_buf_set_lines(buf, -1, -1, true, result)
 
-	vim.api.nvim_set_current_buf(starting_buf)
+	-- vim.api.nvim_set_current_buf(starting_buf)
 
 	-- The problem with this is that you lose the query history, which can be nice!
 	-- vim.api.nvim_buf_set_option(buf, "modifiable", false)
