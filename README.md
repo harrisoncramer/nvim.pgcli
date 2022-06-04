@@ -3,8 +3,8 @@
 This plugin let's you run PSQL commands directly from within Neovim. The core querying logic of this plugin is forked from <a
 href="https://github.com/mzarnitsa/psql">this</a> repository. The credit is theirs.
 
-[![asciicast](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz.svg)](https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz)
-  
+<script id="asciicast-rGoBtjHnOvwBgVm5zcwavFJBz" src="https://asciinema.org/a/rGoBtjHnOvwBgVm5zcwavFJBz.js" async></script>
+
 ## Requirements
 
 - Neovim 0.7+
