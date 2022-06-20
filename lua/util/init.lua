@@ -22,6 +22,7 @@ local function run_query(query, config)
       setlocal buftype=nofile
       setlocal bufhidden=hide
       setlocal noswapfile
+      set ft=sql
     else
       execute bufwinnr('__SQL__') . 'wincmd w'
     endif
