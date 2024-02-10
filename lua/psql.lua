@@ -1,4 +1,4 @@
-local u = require("util")
+local u = require("util.init")
 
 local SETTINGS = {
 	connection = {
